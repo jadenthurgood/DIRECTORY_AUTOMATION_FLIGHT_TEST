@@ -2,6 +2,7 @@ import os
 import pathlib
 import numpy as np
 from datetime import date
+import time
 #Creates a directory for flight test data, media, and backups
 
 #Get Todays date information
@@ -114,3 +115,7 @@ else:
     #Make the Media folder
     new_path_7 = os.path.join(new_path_4,Media_folder)
     os.makedirs(new_path_7)
+
+#pause the program for 15 seconds to give the user time to read any output messages to the console
+print("\nProgram has completed")
+time.sleep(15)
