@@ -64,7 +64,7 @@ if multiple_ships == False:
 
     for i in np.arange(start_ship_number,end_ship_number + 1):
         ship_number = "ship" + str(i)
-        print(ship_number + " directory created")
+    
         #Make the Date and Ship Folder
         new_path_2 = os.path.join(new_path,(use_year + use_month + use_day + ship_number))
         os.makedirs(new_path_2)
@@ -88,6 +88,8 @@ if multiple_ships == False:
         #Make the Media folder
         new_path_7 = os.path.join(new_path_4,Media_folder)
         os.makedirs(new_path_7)
+
+        print(ship_number + " directory created")
 
 else:
     ship_number = "ship" + str(input("\nEnter the ship number: "))
@@ -115,6 +117,8 @@ else:
     #Make the Media folder
     new_path_7 = os.path.join(new_path_4,Media_folder)
     os.makedirs(new_path_7)
+    
+    print(ship_number + " directory created")
 
 #pause the program for 15 seconds to give the user time to read any output messages to the console
 print("\nProgram has completed")
