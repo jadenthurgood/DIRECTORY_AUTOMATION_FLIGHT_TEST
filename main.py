@@ -18,7 +18,7 @@ GCS_folder = "GCS"
 Media_folder = "Media"
 
 #Get the programs name
-program_name = "\_" + str(input("\nEnter the name of the program: ")) + "_Flights"
+program_name = str(input("\nEnter the name of the program: ")) + "_Flights"
 
 #ask if the user would like to use today's date for the folder naming or if they want to manually input the date
 use_todays_date = int(input("\nWould you like to used today's date to name the aircraft folder? (Type 1 for yes and 0 for no): "))
@@ -35,7 +35,13 @@ else: #manually input a date
 
 #Get the drive that the program is being run from
 current_directory = str(pathlib.Path().resolve())
-current_drive = current_directory[0:2]
+
+#Save the new directories at the directory where the program was run
+current_drive = current_directory
+
+#Save the directory at the drive level
+""" current_drive = current_directory[0:3] """
+
 
 #check to see if the directory exists before creating it
 path_exists = os.path.isdir(os.path.join(current_drive, program_name))
