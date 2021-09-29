@@ -117,8 +117,15 @@ else:
     #Make the Media folder
     new_path_7 = os.path.join(new_path_4,Media_folder)
     os.makedirs(new_path_7)
-    
+
     print(ship_number + " directory created")
+
+#make sure their directory is where it should be and let the user know
+dir_exists = os.path.isdir(os.path.join(current_drive, program_name))
+if dir_exists:
+    print("\nYour directory was created in the location this program was run from, and is named: ", program_name)
+else:
+    pass
 
 #pause the program for 15 seconds to give the user time to read any output messages to the console
 print("\nProgram has completed")
