@@ -55,44 +55,85 @@ else:
     os.makedirs(new_path)
 
 #Ask the user if they would like to set up multiple ships or just one.
-multiple_ships = int(input("\nWould you like to set up 1 directory for one ship? Or multiple directories for multiple ships? (Type 1 for one ship and 0 for multiple): "))
+single_ship = int(input("\nWould you like to set up 1 directory for one ship? \nOr multiple directories for multiple ships? (Type 1 for one ship and 0 for multiple): "))
 
-if multiple_ships == False:
-    print("\nThis part of the program will create multiple directories over a range of aircraft numbers. The user will input the lowest ship number in the range, and the highest\n")
-    start_ship_number = int(input("Enter the lowest ship number: "))
-    end_ship_number = int(input("Enter the hightest ship number: "))
-
-    for i in np.arange(start_ship_number,end_ship_number + 1):
-        ship_number = "ship" + str(i)
+if single_ship == False:
+    print("\n\nThis part of the program will create multiple directories over a range of aircraft numbers.")
+    sequential_ships = int(input("\nAre the ships you are setting up in sequential order (Ex: Ship 01, Ship 02, Ship 03...)?\nType 1 for yes or 0 for no: "))
     
-        #Make the Date and Ship Folder
-        new_path_2 = os.path.join(new_path,(use_year + use_month + use_day + ship_number))
-        os.makedirs(new_path_2)
+    if sequential_ships == False:
+        ships_list = [tail for tail in input("\nPlease enter the ship numbers separated by spaces (Ex: ALE-112 ALE-94 ALE-54): ").split()]
+        
+        #make a directory for each of the user specified ships
+        for i in range(len(ships_list)):
+            ship_number = ships_list[i]
 
-        #Make the Preflight Folder
-        new_path_3 = os.path.join(new_path_2,preflight_folder)
-        os.makedirs(new_path_3)
+            #Make the Date and Ship Folder 
+            new_path_2 = os.path.join(new_path,(use_year + use_month + use_day + ship_number))
+            os.makedirs(new_path_2)
 
-        #Make the Flight Data folder
-        new_path_4 = os.path.join(new_path_2,flight_data_folder)
-        os.makedirs(new_path_4)
+            #Make the Preflight Folder
+            new_path_3 = os.path.join(new_path_2,preflight_folder)
+            os.makedirs(new_path_3)
 
-        #Make the ONBOARD folder
-        new_path_5 = os.path.join(new_path_4,Onboard_folder)
-        os.makedirs(new_path_5)
+            #Make the Flight Data folder
+            new_path_4 = os.path.join(new_path_2,flight_data_folder)
+            os.makedirs(new_path_4)
 
-        #Make the GCS folder
-        new_path_6 = os.path.join(new_path_4,GCS_folder)
-        os.makedirs(new_path_6)
+            #Make the ONBOARD folder
+            new_path_5 = os.path.join(new_path_4,Onboard_folder)
+            os.makedirs(new_path_5)
 
-        #Make the Media folder
-        new_path_7 = os.path.join(new_path_4,Media_folder)
-        os.makedirs(new_path_7)
+            #Make the GCS folder
+            new_path_6 = os.path.join(new_path_4,GCS_folder)
+            os.makedirs(new_path_6)
 
-        print(ship_number + " directory created")
+            #Make the Media folder
+            new_path_7 = os.path.join(new_path_4,Media_folder)
+            os.makedirs(new_path_7)
 
-else:
-    ship_number = "ship" + str(input("\nEnter the ship number: "))
+            print(ship_number + " directory created")
+        pass
+
+    else: #The ship numbers are in sequential order
+
+        print("\nThe user will input the lowest ship number in the range, and the highest\n")
+
+        start_ship_number = int(input("Enter the lowest ship number: "))
+        end_ship_number = int(input("Enter the hightest ship number: "))
+
+        for i in np.arange(start_ship_number,end_ship_number + 1):
+            ship_number = "Ship" + str(i)
+        
+            #Make the Date and Ship Folder
+            new_path_2 = os.path.join(new_path,(use_year + use_month + use_day + ship_number))
+            os.makedirs(new_path_2)
+
+            #Make the Preflight Folder
+            new_path_3 = os.path.join(new_path_2,preflight_folder)
+            os.makedirs(new_path_3)
+
+            #Make the Flight Data folder
+            new_path_4 = os.path.join(new_path_2,flight_data_folder)
+            os.makedirs(new_path_4)
+
+            #Make the ONBOARD folder
+            new_path_5 = os.path.join(new_path_4,Onboard_folder)
+            os.makedirs(new_path_5)
+
+            #Make the GCS folder
+            new_path_6 = os.path.join(new_path_4,GCS_folder)
+            os.makedirs(new_path_6)
+
+            #Make the Media folder
+            new_path_7 = os.path.join(new_path_4,Media_folder)
+            os.makedirs(new_path_7)
+
+            print(ship_number + " directory created")
+
+else: #The user just wants to create one ship directory
+
+    ship_number = "Ship" + str(input("\nEnter the ship number: "))
 
     #Make the Date and Ship Folder
     new_path_2 = os.path.join(new_path,(use_year + use_month + use_day + ship_number))
